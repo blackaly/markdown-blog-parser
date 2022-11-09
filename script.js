@@ -1,6 +1,13 @@
 let input = `
 # Hello everbody, we konw try to think about the difference between me and him
-### Let's try a new thing to make it happening faster than usual`
+### Let's try a new thing to make it happening faster than usual
+> This is a blacqoute
+hello this is a paragraph
+- Soukaina
+- Nada
+- Abdullah
+- Ali
+- Muhammad`
 
 // split string by line using regular expression.
 let split_to_lines = input.match(/[^\r\n]+/g);
@@ -21,6 +28,19 @@ for(let [index, val] of split_to_lines.entries()){
         output +=  '</h' + head_cnt + '>';
     }
 
+    else if(val[0] == ">"){
+        output += "<blockquote>" + val.slice(1) + "</blockquote>";
+    }
+
+    else if(val[0] == '-'){
+        if(split_to_lines[index - 1]?.[0] != '-')
+            output += "<ul>";
+        
+        output += "<li>" + val.slice(1) + "</li>";
+
+        if(split_to_lines[index + 1]?.[0] != '-')
+            output += "</ul>";
+    }
     
 }
 
