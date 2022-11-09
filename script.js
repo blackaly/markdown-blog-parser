@@ -15,11 +15,13 @@ for(let [index, val] of split_to_lines.entries()){
         ++head_cnt;
         if(val[1] == '#') ++head_cnt;
         if(val[2] == '#') ++head_cnt;
+
+        output += '<h' + head_cnt + '>';
+        output += val.slice(head_cnt + 1);
+        output +=  '</h' + head_cnt + '>';
     }
 
-    output += '<h' + head_cnt + '>';
-    output += val.slice(head_cnt + 1);
-    output +=  '</h' + head_cnt + '>';
+    
 }
 
 document.querySelector("body").innerHTML = output;
